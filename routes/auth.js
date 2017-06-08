@@ -16,14 +16,14 @@ router.post("/signup", function (req, res) {
     });
 });
 
-router.get("/login", function (req, res) {
+router.post("/login", function (req, res) {
     var loginData = req.body;
     var username = loginData.username;
     var password = loginData.password;
     conn.query("SELECT password FROM users WHERE username = ?", username, function (err, rows, fields) {
         if (err) res.status(500).send("error in database");
         else
-            if (rows.length == 0) res.status(400).send("user does not exist");
+            if (rows.length == 0) res.status(404).send("user does not exist");
             else
                 if (password == rows[0].password) res.status(200).send("ok");
                 else res.status(400).send("wrong password");
