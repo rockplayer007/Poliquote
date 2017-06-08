@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    form#signupForm(action="/api/auth/signup" method="POST")
+        table(style="margin: 0 auto; padding-top: 100px;")
+            tr
+                td
+                    .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                        input#usernameBox.mdl-textfield__input(type="text" name="username" required)
+                        label.mdl-textfield__label(for="usernameBox") Username
+            tr
+                td
+                    .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                        input#passwordBox.mdl-textfield__input(type="password" name="password" required)
+                        label.mdl-textfield__label(for="passwordBox") Password
+        
+            tr
+                td
+                    button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent(type="submit" style="width: 100%;") Sign up
+
+    script(src="/javascripts/signup.js")

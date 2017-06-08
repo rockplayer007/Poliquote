@@ -10,7 +10,7 @@ router.post("/signup", function (req, res) {
             if (rows.length == 0)
                 conn.query("INSERT INTO users SET ?", user, function (err, result) {
                     if (err) res.status(500).send("error in database");
-                    else res.send(200).send("ok");
+                    else res.status(200).send("ok");
                 });
             else res.status(400).send("username not available");
     });
