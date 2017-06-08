@@ -25,4 +25,23 @@ router.get("/getposts", function (req, res) {
     });
 });
 
+router.post("/addpost", function (req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+    var post = req.body.post;
+    // Check if the provided password is correct
+    conn.query("SELECT password FROM users WHERE username = ?", username, function (err, rows, fields) {
+        if (err) res.status(500).send("error in database");
+        else
+            if (rows.length == 0) res.status(400).send("user does not exist");
+            else
+                if (password == rows[0].password)
+                    conn.query("INSERT INTO posts SET ?", post, function (err, result) {
+                        if (err) res.status(500).send("error in database");
+                        else res.status(200).send("ok");
+                    });
+                else res.status(400).send("wrong password");
+    });
+});
+
 module.exports = router;
