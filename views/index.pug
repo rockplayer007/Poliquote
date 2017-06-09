@@ -1,7 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .mdl-layout.mdl-js-layout
+    header.mdl-layout__header.mdl-layout__header--transparent.mdl-layout--no-drawer-button
+      .mdl-layout__header-row
+        span.mdl-layout-title.brush.bold Title
+        .mdl-layout-spacer
+        #userBox.headerBox
+          span#user-txt.bold
+          i#user-logout.material-icons(onclick="logout()") exit_to_app
+        #loginBox.headerBox
+          a#login-link.bold(href="/login") login
+    main.mdl-layout__content
   
   script(src="/javascripts/index.js")

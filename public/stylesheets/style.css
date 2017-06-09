@@ -1,0 +1,27 @@
+header{
+    display: block !important;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.brush{     
+    color: rgb(255, 59, 48);
+}
+
+.headerBox{
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+#user-logout{
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+#login-link{
+    text-decoration-line: none;
+}
+

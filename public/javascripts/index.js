@@ -7,8 +7,10 @@ window.onload = function () {
             data: credentials
         }).done(function () {
             ShowSnackbar("Welcome " + credentials.username);
+            $("#userBox").show();
+            $("#loginBox").hide();
+            $("#user-txt").text(credentials.username);
         }).fail(function (data) {
-            console.log(data);
             switch (data.status) {
                 case 500:
                 default:
@@ -19,4 +21,13 @@ window.onload = function () {
                     window.location.href += "login";
             }
         });
+    else {
+        $("#userBox").hide();
+        $("#loginBox").show();
+    }
+}
+
+function logout() {
+    localStorage.removeItem("credentials");
+    location.reload();
 }
