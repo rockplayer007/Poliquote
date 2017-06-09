@@ -10,6 +10,16 @@ header{
     color: rgb(255, 59, 48);
 }
 
+.brush-bg{
+    background-color: rgb(255, 59, 48);
+    color: white;
+}
+
+.brush-bg:hover{
+    background-color: rgb(255, 59, 48);
+    color: white;
+}
+
 .headerBox{
     color: black;
     display: flex;
@@ -23,5 +33,14 @@ header{
 
 #login-link{
     text-decoration-line: none;
+}
+
+#add-btn{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 24px;
+    margin-right: 24px;
+    z-index: 1;
 }
 
