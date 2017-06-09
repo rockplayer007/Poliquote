@@ -30,6 +30,7 @@ window.onload = function () {
         $("#userBox").hide();
         $("#loginBox").show();
     }
+    getQuotes();
 }
 
 function checkCredentials() {
@@ -77,6 +78,20 @@ function addQuote() {
             ShowSnackbar(status);
         });
     }
+}
+
+function getQuotes() {
+    var options = null;
+    $.get(window.location.href + "api/posts/getposts", options, function (data, status, xhr) {
+        switch (xhr.status) {
+            case 200:
+                //Render all the retrieved quotes   
+                break;
+            default:
+                //Show an error message    
+                break;
+        }
+    });
 }
 
 function logout() {
