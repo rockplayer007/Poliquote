@@ -44,3 +44,7 @@ header{
     z-index: 1;
 }
 
+/*Dialog*/
+.dialog-title{
+    font-size: 20pt;
+}

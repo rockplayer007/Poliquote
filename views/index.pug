@@ -13,8 +13,31 @@ block content
           a#login-link.bold(href="/login") login
     main.mdl-layout__content
   
-  button#add-btn.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.brush-bg
+  button#add-btn.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.brush-bg(onclick="showDialog()")
     i.material-icons add
   
+  dialog.mdl-dialog
+    h4.mdl-dialog__title.dialog-title.bold new quote
+    .mdl-dialog__content
+      form#quoteForm
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          input#name.mdl-textfield__input.brush.bold(type="text" name="name")
+          label.mdl-textfield__label(for="name") Prof name
+        table
+          td
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label(style="width: 100%;")
+              input#subject.mdl-textfield__input(type="text" name="subject")
+              label.mdl-textfield__label(for="subject") Subject
+          td
+            .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label(style="width: 100%;")
+              input#school.mdl-textfield__input(type="text" name="school") 
+              label.mdl-textfield__label(for="school") School
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          textarea#quote.mdl-textfield__input(type="text" name="quote" rows="3")
+          label.mdl-textfield__label(for="quote") Quote
+    .mdl-dialog__actions  
+      button.mdl-button.mdl-js-button.brush.bold(type="submit" onclick="addQuote()") Add
+      button.mdl-button(type="button" onclick="closeDialog()") Cancel
+
   script(src="/javascripts/dialog-polyfill.js")
   script(src="/javascripts/index.js")

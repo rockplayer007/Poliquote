@@ -21,14 +21,14 @@ router.get("/getposts", function (req, res) {
     }
     conn.query(query, function (err, rows, fields) {
         if (err) res.status(500).send("error in database");
-        else res.status(200).send(rows);
+        else res.status(200).send(rows);    
     });
 });
 
 router.post("/addpost", function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
-    var post = req.body.post;
+    var post = JSON.parse(req.body.post);
     // Check if the provided password is correct
     conn.query("SELECT password FROM users WHERE username = ?", username, function (err, rows, fields) {
         if (err) res.status(500).send("error in database");

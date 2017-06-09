@@ -1,3 +1,8 @@
+var dialog = document.querySelector('dialog');
+if (!dialog.showModal) {
+    dialogPolyfill.registerDialog(dialog);
+}
+
 window.onload = function () {
     var credentials = JSON.parse(localStorage.getItem("credentials"));
     if (credentials)
@@ -24,6 +29,53 @@ window.onload = function () {
     else {
         $("#userBox").hide();
         $("#loginBox").show();
+    }
+}
+
+function checkCredentials() {
+    var credentials = JSON.parse(localStorage.getItem("credentials"));
+    if (!credentials) {
+        ShowSnackbar("Your credentials are not correct, log in again");
+        logout();
+        return null;
+    }
+    return credentials;
+}
+
+function showDialog() {
+    dialog.showModal();
+}
+
+function closeDialog() {
+    dialog.close();
+}
+
+function addQuote() {
+    var c = checkCredentials();
+    if (c) {
+        var quote = { name: $("#name").val().toLowerCase(), subject: $("#subject").val().toLowerCase(), school: $("#school").val().toLowerCase(), quote: $("#quote").val().toLowerCase() };
+        var data = { username: c.username, password: c.password, post: JSON.stringify(quote) };
+        $.ajax({
+            url: window.location.href + "api/posts/addpost",
+            type: "POST",
+            data: data
+        }).done(function () {
+            ShowSnackbar("Succesfully added your quote!");
+            dialog.close();
+        }).fail(function (data) {
+            var status = "";
+            switch (data.status) {
+                case 400:
+                    status = "Your credentials are not correct, log in again";
+                    logout();
+                    break;
+                case 500:
+                default:
+                    status = "An error occurred, please try again";
+                    break;
+            }
+            ShowSnackbar(status);
+        });
     }
 }
 
