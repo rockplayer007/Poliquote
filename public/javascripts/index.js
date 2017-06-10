@@ -13,6 +13,7 @@ window.onload = function () {
         }).done(function () {
             ShowSnackbar("Welcome " + credentials.username);
             $("#userBox").show();
+            $("#add-btn").show();
             $("#loginBox").hide();
             $("#user-txt").text(credentials.username);
         }).fail(function (data) {
@@ -28,6 +29,7 @@ window.onload = function () {
         });
     else {
         $("#userBox").hide();
+        $("#add-btn").hide();
         $("#loginBox").show();
     }
     getQuotes();
