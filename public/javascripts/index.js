@@ -63,6 +63,7 @@ function addQuote() {
         }).done(function () {
             ShowSnackbar("Succesfully added your quote!");
             dialog.close();
+            location.reload();
         }).fail(function (data) {
             var status = "";
             switch (data.status) {
@@ -85,7 +86,9 @@ function getQuotes() {
     $.get(window.location.href + "api/posts/getposts", options, function (data, status, xhr) {
         switch (xhr.status) {
             case 200:
-                //Render all the retrieved quotes   
+                for (i in data) {
+                    $("#quotes-grid").loadTemplate("../templates/quote.html", data[i], { prepend: true });
+                }    
                 break;
             default:
                 //Show an error message    

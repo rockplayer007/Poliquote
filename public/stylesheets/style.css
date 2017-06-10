@@ -48,3 +48,8 @@ header{
 .dialog-title{
     font-size: 20pt;
 }
+
+/*quote card*/
+.quote{
+    width: 100%;
+}
