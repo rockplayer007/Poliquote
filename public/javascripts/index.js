@@ -56,7 +56,7 @@ function closeDialog() {
 function addQuote() {
     var c = checkCredentials();
     if (c) {
-        var quote = { name: $("#name").val().toLowerCase(), subject: $("#subject").val().toLowerCase(), school: $("#school").val().toLowerCase(), quote: $("#quote").val().toLowerCase() };
+        var quote = { name: $("#name").val(), subject: $("#subject").val(), school: $("#school").val(), quote: $("#quote").val() };
         var data = { username: c.username, password: c.password, post: JSON.stringify(quote) };
         $.ajax({
             url: window.location.href + "api/posts/addpost",
